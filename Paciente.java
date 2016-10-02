@@ -30,7 +30,7 @@ public class Paciente implements Comparable<Paciente> {
         if(propio >= ajeno){
             return 0;
         }
-        else{
+        else {
             return 1;
         }
 
