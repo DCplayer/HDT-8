@@ -24,15 +24,13 @@ public class Paciente implements Comparable<Paciente> {
     }
 
     @Override
-    public int compareTo(Paciente o) {
+    public boolean compareTo(Paciente o) {
         int propio = (int)this.prioridad;
         int ajeno = (int)o.getPrioridad();
-        if(propio >= ajeno){
-            return 0;
-        }
-        else {
-            return 1;
-        }
+        if(propio >= ajeno)
+            return False;
+        else
+            return True;
 
     }
 }
