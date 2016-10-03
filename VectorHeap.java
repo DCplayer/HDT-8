@@ -5,7 +5,7 @@ public class VectorHeap<E extends Comparable<E>> implements interfazPriorityQueu
 
     protected Vector<E> data; // the data, kept in heap order
 
-    public VectorHeap()
+    public VectorHeap(E o)
     // post: constructs a new priority queue
     {
         data = new Vector<E>();
