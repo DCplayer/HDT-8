@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-
+        Vector pacientela = new Vector();
 
         FileReader in = new FileReader("C:/test.txt");
         BufferedReader br = new BufferedReader(in);
@@ -24,7 +24,10 @@ public class Main {
         String linea;
         while ((linea = br.readLine()) != null) {
             temporal = linea.split(limitante);
-
+            char ultimo = temporal[2].charAt(0);
+            Paciente paci = new Paciente(temporal[0], temporal[1], ultimo);
+            pacientela.addElement(paci);
+            linea = br.readLine();
         }
         in.close();
 
