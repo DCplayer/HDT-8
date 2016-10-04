@@ -99,10 +99,18 @@ public class VectorHeap<E extends Comparable<E>> implements interfazPriorityQueu
     public E getFirst(){
         return data.firstElement();
     }
+    
+    public E getLast(){
+        return data.lastElement();
+    }
 
     @Override
     public E remove() {
-        return null;
+        E minVal = getFirst();
+	data.set(0,data.get(data.size()-1));
+	data.setSize(data.size()-1);
+	if (data.size() > 1) pushDownRoot(0);
+	return minVal;
     }
 
     @Override

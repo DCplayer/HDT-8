@@ -6,6 +6,9 @@ public class Paciente implements Comparable<Paciente> {
     public String diagnostico;
     public char prioridad;
 
+    public Paciente(){
+        
+    }
     public Paciente(String nombre, String diagnostico, char prioridad){
         this.nombre = nombre;
         this.diagnostico = diagnostico;
@@ -14,6 +17,12 @@ public class Paciente implements Comparable<Paciente> {
     public char getPrioridad() {
         return prioridad;
     }
+    
+    public void setter(String nombre, String diagnostico, char prioridad){
+        this.nombre = nombre;
+        this.diagnostico = diagnostico;
+        this.prioridad = prioridad;
+    }            
 
     public String getDiagnostico() {
         return diagnostico;
@@ -33,5 +42,9 @@ public class Paciente implements Comparable<Paciente> {
             return 1;
             }
 
+    }
+    
+    public String toString(){
+        return this.nombre + this.diagnostico + String.valueOf(this.prioridad);
     }
 }

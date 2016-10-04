@@ -14,9 +14,11 @@ public class main {
 
     public static void main(String[] args) throws IOException {
 
-        Vector pacientela = new Vector();
+        Paciente pas = new Paciente();
+        VectorHeap pacientela = new VectorHeap(pas);
+        pacientela.clear();
 
-        FileReader in = new FileReader("C:/test.txt");
+        FileReader in = new FileReader("C:/Users/ING MIGUEL MORALES/Documents/NetBeansProjects/HDT-8/HDT8-HEAPS/src/pacientes.txt");
         BufferedReader br = new BufferedReader(in);
 
         String[] temporal;
@@ -25,11 +27,15 @@ public class main {
         while ((linea = br.readLine()) != null) {
             temporal = linea.split(limitante);
             char ultimo = temporal[2].charAt(0);
-            Paciente paci = new Paciente(temporal[0], temporal[1], ultimo);
-            pacientela.addElement(paci);
+            pas.setter(temporal[0], temporal[1], ultimo);
+            pacientela.add(pas);
             linea = br.readLine();
         }
         in.close();
+        
+        //Showing in order
+        
+        System.out.println(pacientela.getFirst().toString());
 
     }
 }
