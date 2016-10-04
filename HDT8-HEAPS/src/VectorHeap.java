@@ -1,5 +1,12 @@
-import java.util.PriorityQueue;
-import java.util.Vector;
+/*
+* Universidad del Valle de Guatemala
+* Algoritmos y Estructuras de Datos - Ing. Douglas Barrios
+* Christian Fernando Morales López - 15015
+* Diego Castañenda - 15151
+* 03/10/16 - CLASS VECTORHEAP
+*/
+
+import java.util.*;
 
 public class VectorHeap<E extends Comparable<E>> implements interfazPriorityQueue<E> {
 
@@ -46,16 +53,18 @@ public class VectorHeap<E extends Comparable<E>> implements interfazPriorityQueu
     // pre: 0 <= leaf < size
     // post: moves node at index leaf up to appropriate position
     {
-        int parent = parent(leaf);
-        E value = data.get(leaf);
-        while (leaf > 0 &&
-                (value.compareTo(data.get(parent)) < 0)) {
-            data.set(leaf, data.get(parent));
-            leaf = parent;
-            parent = parent(leaf);
-        }
-        data.set(leaf, value);
+	int parent = parent(leaf);
+	E value = data.get(leaf);
+	while (leaf > 0 &&
+	(value.compareTo(data.get(parent)) < 0))
+	{
+		data.set(leaf,data.get(parent));
+		leaf = parent;
+		parent = parent(leaf);
+	}
+	data.set(leaf,value);
     }
+    
     @Override
     public void add(E value)
     // pre: value is non-null comparable
@@ -97,7 +106,7 @@ public class VectorHeap<E extends Comparable<E>> implements interfazPriorityQueu
     }
     @Override
     public E getFirst(){
-        return data.firstElement();
+        return data.get(0);
     }
     
     public E getLast(){

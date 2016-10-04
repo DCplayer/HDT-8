@@ -1,41 +1,54 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.*;
 import java.io.*;
+import java.util.*;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Vector;
+/*
+* Universidad del Valle de Guatemala
+* Algoritmos y Estructuras de Datos - Ing. Douglas Barrios
+* Christian Fernando Morales López - 15015
+* Diego Castañenda - 15151
+* 03/10/16 - CLASS MAIN
+*/
 
 public class main {
 
+    /**
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
 
-        Paciente pas = new Paciente();
-        VectorHeap pacientela = new VectorHeap(pas);
-        pacientela.clear();
+        Vector<Paciente> pacientes = new Vector<Paciente>();
 
         FileReader in = new FileReader("C:/Users/ING MIGUEL MORALES/Documents/NetBeansProjects/HDT-8/HDT8-HEAPS/src/pacientes.txt");
         BufferedReader br = new BufferedReader(in);
+        String linea;
 
         String[] temporal;
         String limitante = ",";
-        String linea;
         while ((linea = br.readLine()) != null) {
             temporal = linea.split(limitante);
             char ultimo = temporal[2].charAt(0);
-            pas.setter(temporal[0], temporal[1], ultimo);
-            pacientela.add(pas);
-            linea = br.readLine();
+            pacientes.add(new Paciente(temporal[0], temporal[1], ultimo));
         }
         in.close();
         
-        //Showing in order
+        //Showing patients input
+        System.out.println("Se muestra la lista de pacientes segun su orden de ingreso");
+        System.out.println("-------------------------------------------------------------------------------------------");
+        for(int i =0; i < pacientes.size(); i++){
+            System.out.println( i+1 + ". " + pacientes.get(i));
+        }
         
-        System.out.println(pacientela.getFirst().toString());
+        //Showing in order
+        System.out.println("");
+        System.out.println("Se muestra la lista de pacientes segun su orden de urgencia");
+        System.out.println("-------------------------------------------------------------------------------------------");
+        VectorHeap<Paciente> pacientela = new VectorHeap<Paciente>(pacientes);
+        for(int i =0; i < pacientes.size(); i++){
+            System.out.println( i+1 + ". " + pacientela.remove().toString());
+        }        
 
     }
 }

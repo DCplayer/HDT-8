@@ -1,3 +1,11 @@
+/*
+* Universidad del Valle de Guatemala
+* Algoritmos y Estructuras de Datos - Ing. Douglas Barrios
+* Christian Fernando Morales López - 15015
+* Diego Castañenda - 15151
+* 03/10/16 - CLASS INTERFACEPRIORITYQUEUE
+*/
+
 public interface interfazPriorityQueue<E extends Comparable<E>>
 {
     public E getFirst();
